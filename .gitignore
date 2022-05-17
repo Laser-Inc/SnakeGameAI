@@ -7,6 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+.Grid.cpython-310.pyc
 .idea/
 .Python
 build/
