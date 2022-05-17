@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-from Grid import Grid
+from src.Grid import Grid
 
 grid = Grid(50)
 pygame.init()
