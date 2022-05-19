@@ -2,11 +2,12 @@ import sys
 
 import pygame
 
-from src.Grid import Grid
-
-grid = Grid(50)
 pygame.init()
-screen = pygame.display.set_mode((grid.pixel_width(), grid.pixel_height()))
+
+WIDTH = 500
+HEIGHT = 500
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
 def main():
