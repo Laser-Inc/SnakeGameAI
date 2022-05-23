@@ -5,3 +5,5 @@ class Snake:
     def get_current_position(self):
         return self.current_position
 
+
+HEAD = 0
