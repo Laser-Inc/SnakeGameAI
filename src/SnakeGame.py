@@ -14,7 +14,7 @@ GREEN = (0, 255, 0)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 centre_screen = (WIDTH // 2, HEIGHT // 2)
-snake = Snake(centre_screen, SNAKE_WIDTH)
+snake = Snake(centre_screen, SNAKE_WIDTH, "right")
 
 
 def main():
