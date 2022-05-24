@@ -19,18 +19,18 @@ snake = Snake(centre_screen, SNAKE_WIDTH, "right")
 
 def main():
     draw_snake(snake)
-    while True:
+    running = True
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+                running = False
 
 
 def draw_snake(snake_to_draw):
     for i in range(snake_to_draw.get_length()):
         pygame.draw.rect(screen, GREEN,
-                         pygame.Rect(snake_to_draw.get_coords_of_body_section(i)[0],
-                                     snake_to_draw.get_coords_of_body_section(i)[1],
+                         pygame.Rect(snake_to_draw.get_coordinates_of_body_section(i)[0],
+                                     snake_to_draw.get_coordinates_of_body_section(i)[1],
                                      SNAKE_WIDTH, SNAKE_WIDTH))
     pygame.display.flip()
 

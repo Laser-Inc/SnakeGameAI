@@ -14,11 +14,10 @@ class Snake:
 
         self.append_into_body_array()
 
-    def get_coords_of_body_section(self, body_section_number):
+    def get_coordinates_of_body_section(self, body_section_number):
         if body_section_number == 0:
             return tuple(self.head)
         else:
-
             return tuple(self.head + self.body[body_section_number - 1])
 
     # tuple here because numpy makes adding vectors easy but need tuples for comparison
@@ -34,7 +33,7 @@ class Snake:
 
         for multiplier in range(1, self.length):
             self.body.append(
-                numpy.array([direction_dict[self.direction][0] * self.body_width * -multiplier,
+                numpy.array([-direction_dict[self.direction][0] * self.body_width * multiplier,
                              direction_dict[self.direction][1]]))
 
 
