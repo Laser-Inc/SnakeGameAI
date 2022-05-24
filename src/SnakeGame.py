@@ -8,12 +8,13 @@ pygame.init()
 
 WIDTH = 500
 HEIGHT = 500
-CELL_WIDTH = 10
-CELL_HEIGHT = 10
+SNAKE_WIDTH = 10
 GREEN = (0, 255, 0)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-snake = Snake([((WIDTH / 2), (HEIGHT / 2))])
+
+centre_screen = (WIDTH // 2, HEIGHT // 2)
+snake = Snake(centre_screen, SNAKE_WIDTH)
 
 
 def main():
@@ -25,12 +26,12 @@ def main():
                 sys.exit()
 
 
-def draw_snake(snake):
-
-    for i in range(len(snake.get_current_position())):
+def draw_snake(snake_to_draw):
+    for i in range(snake_to_draw.get_length()):
         pygame.draw.rect(screen, GREEN,
-                         pygame.Rect(snake.get_current_position()[i][0], snake.get_current_position()[i][1], CELL_WIDTH,
-                                     CELL_HEIGHT))
+                         pygame.Rect(snake_to_draw.get_coords_of_body_section(i)[0],
+                                     snake_to_draw.get_coords_of_body_section(i)[1],
+                                     SNAKE_WIDTH, SNAKE_WIDTH))
     pygame.display.flip()
 
 
