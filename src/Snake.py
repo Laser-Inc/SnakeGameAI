@@ -2,6 +2,8 @@ from typing import Dict, Tuple
 
 import numpy
 
+HEAD = 0
+
 
 class Snake:
 
@@ -15,7 +17,7 @@ class Snake:
         self.append_into_body_array()
 
     def get_coordinates_of_body_section(self, body_section_number):
-        if body_section_number == 0:
+        if body_section_number == HEAD:
             return tuple(self.head)
         else:
             return tuple(self.head + self.body[body_section_number - 1])
@@ -31,10 +33,7 @@ class Snake:
             "left": (-1, 0)
         }
 
-        for multiplier in range(1, self.length):
+        for body_section_from_head in range(1, self.length):
             self.body.append(
-                numpy.array([-direction_dict[self.direction][0] * self.body_width * multiplier,
+                numpy.array([-direction_dict[self.direction][0] * self.body_width * body_section_from_head,
                              direction_dict[self.direction][1]]))
-
-
-HEAD = 0
