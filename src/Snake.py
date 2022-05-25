@@ -1,17 +1,16 @@
 import numpy
 
 HEAD = 0
+SNAKE_WIDTH = 10
 
 
 class Snake:
 
-    def __init__(self, start_position_of_head, body_width, direction="right"):
+    def __init__(self, start_position_of_head, direction="right"):
         self.head = start_position_of_head  # Tuple co-ordinates
         self.body = []
         self.length = 3
-        self.body_width = body_width
         self.direction = direction
-
         self.append_into_body_array()
 
     def get_coordinates_of_body_section(self, body_section_number):
@@ -35,7 +34,7 @@ class Snake:
             x_coord_on_grid = -directions[self.direction][0] * body_section_from_head
             y_coord_on_grid = directions[self.direction][1]
 
-            x_coord_pixel = x_coord_on_grid * self.body_width
+            x_coord_pixel = x_coord_on_grid * SNAKE_WIDTH
             y_coord_pixel = y_coord_on_grid
 
             self.body.append(
