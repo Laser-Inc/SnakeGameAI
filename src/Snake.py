@@ -1,5 +1,3 @@
-from typing import Dict, Tuple
-
 import numpy
 
 HEAD = 0
@@ -28,12 +26,13 @@ class Snake:
         return self.length
 
     def append_into_body_array(self):
-        direction_dict: dict[str, tuple[int, int]] = {
+        directions: dict[str, tuple[int, int]] = {
             "right": (1, 0),
             "left": (-1, 0)
         }
 
         for body_section_from_head in range(1, self.length):
+            x = -directions[self.direction][0] * self.body_width * body_section_from_head
+            y = directions[self.direction][1]
             self.body.append(
-                numpy.array([-direction_dict[self.direction][0] * self.body_width * body_section_from_head,
-                             direction_dict[self.direction][1]]))
+                numpy.array([x, y]))

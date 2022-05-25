@@ -1,7 +1,4 @@
 import unittest
-
-import numpy
-
 from src.Snake import Snake, HEAD
 from src.SnakeGame import WIDTH, HEIGHT, screen, draw_snake, SNAKE_WIDTH
 
