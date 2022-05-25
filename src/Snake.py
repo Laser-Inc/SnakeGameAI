@@ -32,7 +32,11 @@ class Snake:
         }
 
         for body_section_from_head in range(1, self.length):
-            x = -directions[self.direction][0] * self.body_width * body_section_from_head
-            y = directions[self.direction][1]
+            x_coord_on_grid = -directions[self.direction][0] * body_section_from_head
+            y_coord_on_grid = directions[self.direction][1]
+
+            x_coord_pixel = x_coord_on_grid * self.body_width
+            y_coord_pixel = y_coord_on_grid
+
             self.body.append(
-                numpy.array([x, y]))
+                numpy.array([x_coord_pixel, y_coord_pixel]))
