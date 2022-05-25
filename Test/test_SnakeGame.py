@@ -1,6 +1,6 @@
 import unittest
-from src.Snake import Snake, HEAD
-from src.SnakeGame import WIDTH, HEIGHT, screen, draw_snake, SNAKE_WIDTH
+from src.Snake import Snake, HEAD, SNAKE_WIDTH
+from src.SnakeGame import WIDTH, HEIGHT, screen, draw_snake
 
 GREEN = (0, 255, 0)
 
@@ -9,20 +9,20 @@ class SnakeGameTest(unittest.TestCase):
     def test_check_initial_position_of_snake(self):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
-        snake = Snake(centre_screen, SNAKE_WIDTH, "right")
+        snake = Snake(centre_screen, "right")
         self.assertEqual(centre_screen, snake.get_coordinates_of_body_section(HEAD))
 
     def test_check_if_snake_drawn(self):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
-        snake = Snake(centre_screen, SNAKE_WIDTH, "right")
+        snake = Snake(centre_screen, "right")
         draw_snake(snake)
         self.assertEqual(GREEN, screen.get_at(snake.get_coordinates_of_body_section(HEAD)))
 
     def test_check_multiple_positions_of_snake(self):
         centre_screen = (WIDTH // 2, HEIGHT // 2)
 
-        snake = Snake(centre_screen, SNAKE_WIDTH, "right")
+        snake = Snake(centre_screen,"right")
         draw_snake(snake)
         for i in range(snake.get_length()):
             self.assertEqual(GREEN, screen.get_at(snake.get_coordinates_of_body_section(i)))
@@ -33,7 +33,7 @@ class SnakeGameTest(unittest.TestCase):
     def test_snake_initially_facing_right(self):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
-        snake = Snake(centre_screen, SNAKE_WIDTH, "right")
+        snake = Snake(centre_screen, "right")
 
         for body_section in range(snake.get_length()):
             self.assertEqual((centre_screen[0] - body_section * SNAKE_WIDTH, centre_screen[1]),
@@ -42,7 +42,7 @@ class SnakeGameTest(unittest.TestCase):
     def test_snake_initially_facing_left(self):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
-        snake = Snake(centre_screen, SNAKE_WIDTH, "left")
+        snake = Snake(centre_screen,"left")
 
         for body_section in range(snake.get_length()):
             self.assertEqual((centre_screen[0] + body_section * SNAKE_WIDTH, centre_screen[1]),
