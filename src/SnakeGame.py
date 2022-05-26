@@ -9,6 +9,7 @@ pygame.init()
 WIDTH = 500
 HEIGHT = 500
 GREEN = (0, 255, 0)
+BLACK = (0, 0, 0)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -25,12 +26,11 @@ input_keys = {
 
 def main():
     draw_snake(snake)
+
     running = True
     while running:
         snake.move()
-        screen.fill((0, 0, 0))
         draw_snake(snake)
-        pygame.time.wait(1000)
 
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key in input_keys.keys():
@@ -38,8 +38,11 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
+        pygame.time.wait(250)
+
 
 def draw_snake(snake_to_draw):
+    screen.fill(BLACK)
     for i in range(snake_to_draw.get_length()):
         pygame.draw.rect(screen, GREEN,
                          pygame.Rect(snake_to_draw.get_coordinates_of_body_section(i)[0],
