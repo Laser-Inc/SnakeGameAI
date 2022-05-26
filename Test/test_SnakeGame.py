@@ -22,7 +22,7 @@ class SnakeGameTest(unittest.TestCase):
     def test_check_multiple_positions_of_snake(self):
         centre_screen = (WIDTH // 2, HEIGHT // 2)
 
-        snake = Snake(centre_screen,"right")
+        snake = Snake(centre_screen, "right")
         draw_snake(snake)
         for i in range(snake.get_length()):
             self.assertEqual(GREEN, screen.get_at(snake.get_coordinates_of_body_section(i)))
@@ -42,8 +42,26 @@ class SnakeGameTest(unittest.TestCase):
     def test_snake_initially_facing_left(self):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
-        snake = Snake(centre_screen,"left")
+        snake = Snake(centre_screen, "left")
 
         for body_section in range(snake.get_length()):
             self.assertEqual((centre_screen[0] + body_section * SNAKE_WIDTH, centre_screen[1]),
+                             snake.get_coordinates_of_body_section(body_section))
+
+    def test_snake_initially_facing_up(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "up")
+
+        for body_section in range(snake.get_length()):
+            self.assertEqual((centre_screen[0], centre_screen[1] - body_section * SNAKE_WIDTH),
+                             snake.get_coordinates_of_body_section(body_section))
+
+    def test_snake_initially_facing_down(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "down")
+
+        for body_section in range(snake.get_length()):
+            self.assertEqual((centre_screen[0], centre_screen[1] + body_section * SNAKE_WIDTH),
                              snake.get_coordinates_of_body_section(body_section))

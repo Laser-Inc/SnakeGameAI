@@ -27,15 +27,17 @@ class Snake:
     def append_into_body_array(self):
         directions: dict[str, tuple[int, int]] = {
             "right": (1, 0),
-            "left": (-1, 0)
+            "left": (-1, 0),
+            "up": (0, 1),
+            "down": (0, -1)
         }
 
         for body_section_from_head in range(1, self.length):
             x_coord_on_grid = -directions[self.direction][0] * body_section_from_head
-            y_coord_on_grid = directions[self.direction][1]
+            y_coord_on_grid = -directions[self.direction][1] * body_section_from_head
 
             x_coord_pixel = x_coord_on_grid * SNAKE_WIDTH
-            y_coord_pixel = y_coord_on_grid
+            y_coord_pixel = y_coord_on_grid * SNAKE_WIDTH
 
             self.body.append(
                 numpy.array([x_coord_pixel, y_coord_pixel]))
