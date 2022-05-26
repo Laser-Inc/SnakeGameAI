@@ -70,7 +70,7 @@ class SnakeGameTest(unittest.TestCase):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
         snake = Snake(centre_screen, "right")
-        snake.move()
+        snake.move_head()
 
         self.assertEqual((centre_screen[0] + SNAKE_WIDTH, centre_screen[1]),
                          snake.get_coordinates_of_body_section(HEAD))
@@ -79,7 +79,7 @@ class SnakeGameTest(unittest.TestCase):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
         snake = Snake(centre_screen, "right")
-        snake.move()
+        snake.move_head()
 
         self.assertEqual(centre_screen, snake.get_coordinates_of_body_section(1))
 
@@ -87,7 +87,7 @@ class SnakeGameTest(unittest.TestCase):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
         snake = Snake(centre_screen, "up")
-        snake.move()
+        snake.move_head()
 
         self.assertEqual((centre_screen[0], centre_screen[1] - SNAKE_WIDTH),
                          snake.get_coordinates_of_body_section(HEAD))
@@ -96,7 +96,7 @@ class SnakeGameTest(unittest.TestCase):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
         snake = Snake(centre_screen, "left")
-        snake.move()
+        snake.move_head()
 
         self.assertEqual((centre_screen[0] - SNAKE_WIDTH, centre_screen[1]),
                          snake.get_coordinates_of_body_section(HEAD))
@@ -105,7 +105,7 @@ class SnakeGameTest(unittest.TestCase):
         centre_screen = ((WIDTH // 2), (HEIGHT // 2))
 
         snake = Snake(centre_screen, "down")
-        snake.move()
+        snake.move_head()
 
         self.assertEqual((centre_screen[0], centre_screen[1] + SNAKE_WIDTH),
                          snake.get_coordinates_of_body_section(HEAD))
@@ -115,7 +115,7 @@ class SnakeGameTest(unittest.TestCase):
 
         snake = Snake(centre_screen, "right")
         snake.direction = "up"
-        snake.move()
+        snake.move_head()
 
         self.assertEqual(centre_screen, snake.get_coordinates_of_body_section(1))
 

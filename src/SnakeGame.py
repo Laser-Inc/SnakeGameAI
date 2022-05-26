@@ -29,7 +29,7 @@ def main():
 
     running = True
     while running:
-        snake.move()
+        snake.move_head()
         draw_snake(snake)
 
         for event in pygame.event.get():
