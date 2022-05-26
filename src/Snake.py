@@ -41,3 +41,13 @@ class Snake:
 
             self.body.append(
                 numpy.array([x_coord_pixel, y_coord_pixel]))
+
+    def move(self):
+        movement_function = {
+            "right": lambda: (self.head[0] + SNAKE_WIDTH, self.head[1]),
+            "left": lambda: (self.head[0] - SNAKE_WIDTH, self.head[1]),
+            "up": lambda: (self.head[0], self.head[1] - SNAKE_WIDTH),
+            "down": lambda: (self.head[0], self.head[1] + SNAKE_WIDTH)
+        }
+
+        self.head = movement_function[self.direction]()

@@ -15,12 +15,26 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 centre_screen = (WIDTH // 2, HEIGHT // 2)
 snake = Snake(centre_screen, "right")
 
+input_keys = {
+    pygame.K_LEFT: "left",
+    pygame.K_RIGHT: "right",
+    pygame.K_UP: "up",
+    pygame.K_DOWN: "down",
+}
+
 
 def main():
     draw_snake(snake)
     running = True
     while running:
+        snake.move()
+        screen.fill((0, 0, 0))
+        draw_snake(snake)
+        pygame.time.wait(1000)
+
         for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key in input_keys.keys():
+                snake.direction = input_keys[event.key]
             if event.type == pygame.QUIT:
                 running = False
 

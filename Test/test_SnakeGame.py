@@ -65,3 +65,58 @@ class SnakeGameTest(unittest.TestCase):
         for body_section in range(snake.get_length()):
             self.assertEqual((centre_screen[0], centre_screen[1] + body_section * SNAKE_WIDTH),
                              snake.get_coordinates_of_body_section(body_section))
+
+    def test_the_snake_head_moves_right(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "right")
+        snake.move()
+
+        self.assertEqual((centre_screen[0] + SNAKE_WIDTH, centre_screen[1]),
+                         snake.get_coordinates_of_body_section(HEAD))
+
+    def test_the_snake_body_follows_the_head_right(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "right")
+        snake.move()
+
+        self.assertEqual(centre_screen, snake.get_coordinates_of_body_section(1))
+
+    def test_the_snake_head_moves_up(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "up")
+        snake.move()
+
+        self.assertEqual((centre_screen[0], centre_screen[1] - SNAKE_WIDTH),
+                         snake.get_coordinates_of_body_section(HEAD))
+
+    def test_the_snake_head_moves_left(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "left")
+        snake.move()
+
+        self.assertEqual((centre_screen[0] - SNAKE_WIDTH, centre_screen[1]),
+                         snake.get_coordinates_of_body_section(HEAD))
+
+    def test_the_snake_head_moves_down(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "down")
+        snake.move()
+
+        self.assertEqual((centre_screen[0], centre_screen[1] + SNAKE_WIDTH),
+                         snake.get_coordinates_of_body_section(HEAD))
+
+    def test_the_snake_turns_left(self):
+        centre_screen = ((WIDTH // 2), (HEIGHT // 2))
+
+        snake = Snake(centre_screen, "right")
+        snake.direction = "up"
+        snake.move()
+
+        self.assertEqual(centre_screen, snake.get_coordinates_of_body_section(1))
+
+
